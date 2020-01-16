@@ -3,6 +3,9 @@ const mongoose = require('mongoose') // chamando o mongoose
 const requireDir = require('require-dir');
 //inicando o express
 const app = express();
+//permite enviar objetos .json
+app.use(express.json());
+
 
 
 //inicando o DB
@@ -17,20 +20,11 @@ mongoose.connect("mongodb+srv://cinthia_adm:cinthia@cluster0-fn4xn.mongodb.net/h
 requireDir('./src/models');
 
 //chamando um model para inserir valores
-const Funcionario = mongoose.model('Funcionario');
+//const Funcionario = mongoose.model('Funcionario');
+
+//Usando Rotas
+app.use('/api', require("./src/routes"));
 
 
-app.get('/', (req, res)=>{
-
-    Funcionario.create({
-        nome: "Cristiana",
-        username: "cris-maria",
-        funcao: "desenvolvedora",
-        email: "cris-maria@gmail.com",
-        senha: "senha123",
-    });
-
-    return res.send("ok");
-});
 //definindo porta para executar aplicação
 app.listen(3000);

@@ -1,0 +1,29 @@
+{
+  "name": "back-end-projeto-final-honeypot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifpi-picos/back-end-projeto-final-honeypot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ifpi-picos/back-end-projeto-final-honeypot/issues"
+  },
+  "homepage": "https://github.com/ifpi-picos/back-end-projeto-final-honeypot#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7",
+    "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
+        console.log('route')
         const funcionarios = await funController.get();
         res.send(funcionarios)
     } catch (e) {

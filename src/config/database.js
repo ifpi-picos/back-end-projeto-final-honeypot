@@ -6,7 +6,6 @@ module.exports = function () {
         { useNewUrlParser: true }, () => {
             console.log("Banco Conectado !!!!")
         }
-
     )
 }
 

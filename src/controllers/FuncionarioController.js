@@ -15,9 +15,15 @@ class FuncionarioController {
     }
 
     async get(){
+        console.log("controller")
         try {
-            const funcionarios = await this.FuncionarioModel.find(); 
-            return funcionarios;
+            //const funcionarios = await this.FuncionarioModel.find(); 
+            const ff = {
+                "na": "dd",
+                "nnn": "ss",
+                "dada": "ad"
+            }
+            return ff;
         }catch(e){
             console.error(e);
         }

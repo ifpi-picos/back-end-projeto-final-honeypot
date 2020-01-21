@@ -6,8 +6,7 @@ const database = require('./src/config/database');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(router);
-
+app.use('/', router);
 app.listen(3000), () => {
     database();
     console.log("App Online");

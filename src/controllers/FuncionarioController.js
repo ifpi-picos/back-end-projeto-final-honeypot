@@ -1,25 +1,28 @@
-const mongoose = require('mongoose');
+class FuncionarioController {
+    constructor(Model) {
+        this.FuncionarioModel = Model;
+    }
 
-//chamando o model funcionario
-const Funcionario = mongoose.model('Funcionario');
+    async save(FuncionarioDTO) {
+        try {
+            const funcionarioModel = new this.FuncionarioModel(FuncionarioDTO);
+            const funcionarioSaved = await funcionarioModel.save();
+            return funcionarioSaved;
+        } catch (e) {
+            throw new Error(e);
 
-module.exports = {
-    //esse comando vai buscar todos os funcionarios cadastrados dentro do BD
-    async index(req, res){
-        const funcionarios = await Funcionario.find();
+        }
+    }
 
-        return res.json(funcionarios);
-        //retorna um arquivo .json com todos os funcionarios
-    },
+    async get(){
+        try {
+            const funcionarios = await this.FuncionarioModel.find(); 
+            return funcionarios;
+        }catch(e){
+            console.error(e);
+        }
+       
+    }
+}
 
-
-    async registro(req, res){
-        //criar um funcionario
-        const funcionario = await Funcionario.create(req.body);
-        // cria um funcionario com o body da requisição
-
-        //retorna o funcionario criado
-        return res.json(funcionario);
-
-    },
-};
+module.exports = FuncionarioController;

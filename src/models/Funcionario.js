@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
-// chama o mongoose novemente
-
-
-// aqui cria o Schema fucionario em um objeto.json
 
 const FuncionarioSchema = new mongoose.Schema({
-    nome:{
+    nome: {
         type: String,
         required: true,
     },
-    username:{
+    username: {
         type: String,
         required: true,
     },
@@ -28,5 +24,6 @@ const FuncionarioSchema = new mongoose.Schema({
 
 });
 
-mongoose.model('Funcionario', FuncionarioSchema);
+const Funcionario = mongoose.model("Funcionario", FuncionarioSchema);
+module.exports = Funcionario;
 //transforma o objeto em modelo a ser chamado

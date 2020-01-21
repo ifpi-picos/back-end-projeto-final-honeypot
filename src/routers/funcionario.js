@@ -5,7 +5,7 @@ const funController = new FunController(Funcionario);
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/funcionarios", async (req, res) => {
     try {
         const funDTO = req.body;
         const funcionarioSaved = await funController.save(funDTO);

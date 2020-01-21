@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./src/routers/index')
-const database =  require('./src/config/database')
+const router = require('./src/routers/index');
+const cors = require('cors');
 const mongoose =  require('mongoose')
 const app = express();
 
@@ -15,6 +15,8 @@ mongoose.connect("mongodb+srv://cinthia_adm:cinthia@cluster0-fn4xn.mongodb.net/h
 
 
 app.use(bodyParser.json());
+app.use(cors());
+app.options('*', cors());
 app.use('/', router);
 app.listen(3000), () => {
     console.log("App Online");

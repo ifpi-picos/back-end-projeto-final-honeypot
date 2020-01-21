@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         const funDTO = req.body;
+        console.log('cheguei');
         const funcionarioSaved = await funController.save(funDTO);
         res.send(funcionarioSaved);
     } catch (e) {

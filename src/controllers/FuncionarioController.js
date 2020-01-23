@@ -34,17 +34,23 @@ class FuncionarioController {
         }
     }
 
-    async logar() {
+    async logar(name, senha) {
         try {
-            const { username, senha } = req.body;
-            const user = await this.FuncionarioModel.findOne({ username });
-            if (!user) {
-                return res.status(400).json({ error: "User not found" });
+            console.log(name);
+            const user = await this.FuncionarioModel.findOne({ email: name });
+            console.log(user.senha);
+            if (!user || !bcrypt.compareSync(senha, user.senha)) {
+                console.log('cheguei')
+                return {
+                    erro: [
+                        { msg: 'E-mail ou senha estão incorretos!' },
+                    ],
+                };
             }
-            if (!(await user.compareHash(senha))) {
-                return res.status(400).json({ error: "Invalid password" });
+            return {
+                name: user.username,
+                email: user.email,
             }
-            return res.json({ user })
 
         } catch (e) {
             throw new error(e);

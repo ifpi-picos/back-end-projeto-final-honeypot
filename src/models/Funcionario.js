@@ -23,22 +23,10 @@ const FuncionarioSchema = new mongoose.Schema({
     senha: {
         type: String,
         required: true,
-        select: false,
     },
 
 });
 
-FuncionarioSchema.pre("save", async function hashPassword(next) {
-    if (!this.isModified('senha')) next();
-
-    this.senha = await bcrypt.hash(this.senha, 8);
-});
-
-FuncionarioSchema.methods = {
-    compareHash(hash) {
-        return bcrypt.compare(hash, this.senha)
-    }
-}
 const Funcionario = mongoose.model("Funcionario", FuncionarioSchema);
 
 module.exports = Funcionario;

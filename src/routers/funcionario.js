@@ -35,7 +35,13 @@ router.delete('/:id', async (req, res) => {
     }
   });
 router.post("/logar", async(req,res) =>{
-    funController.logar(req,res)
+   try {
+    const { email, senha } = req.body;
+    const d = await funController.logar(email, senha)
+        res.status(200).send(d);
+   } catch (err) {
+       res.status(400).send(err);
+   }
 });
 
 module.exports = router;

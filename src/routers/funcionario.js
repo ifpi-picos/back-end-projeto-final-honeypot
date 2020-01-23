@@ -26,4 +26,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+      await funController.remove(req.params.id);
+      res.send(message.success.removeFuncionario);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  });
+router.post("/logar", async(req,res) =>{
+    funController.logar(req,res)
+});
+
 module.exports = router;

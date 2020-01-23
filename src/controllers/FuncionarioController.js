@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 class FuncionarioController {
     constructor(Model) {
         this.FuncionarioModel = Model;
@@ -13,15 +15,36 @@ class FuncionarioController {
         }
     }
 
-    async get(){
+    async get() {
         try {
-            const funcionarios = await this.FuncionarioModel.find(); 
+            const funcionarios = await this.FuncionarioModel.find();
             return funcionarios;
-        }catch(e){
+        } catch (e) {
             console.error(e);
         }
-       
+
     }
+
+    async remove(id) {
+        try {
+            await this.FuncionarioModel.deleteOne({_id: req.params.id });
+            res.sendStatus(204)
+        } catch (e) {
+            throw new error(e);
+        }
+    }
+
+
+    async logar() {
+        try {
+            const body = req.body;
+            const funcionario = await this.funcionario.findOne({ });
+
+        } catch (e) {
+            throw new error(e);
+        }
+    }
+
 }
 
 module.exports = FuncionarioController;

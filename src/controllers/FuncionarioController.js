@@ -27,24 +27,30 @@ class FuncionarioController {
 
     async remove(id) {
         try {
-            await this.FuncionarioModel.deleteOne({_id: req.params.id });
+            await this.FuncionarioModel.deleteOne({ _id: req.params.id });
             res.sendStatus(204)
         } catch (e) {
             throw new error(e);
         }
     }
 
-
     async logar() {
         try {
-            const body = req.body;
-            const funcionario = await this.funcionario.findOne({ });
+            const { username, senha } = req.body;
+            const user = await this.FuncionarioModel.findOne({ username });
+            if (!user) {
+                return res.status(400).json({ error: "User not found" });
+            }
+            if (!(await user.compareHash(senha))) {
+                return res.status(400).json({ error: "Invalid password" });
+            }
+            return res.json({ user })
 
         } catch (e) {
             throw new error(e);
         }
-    }
 
+    }
 }
 
 module.exports = FuncionarioController;

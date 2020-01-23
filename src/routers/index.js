@@ -1,6 +1,7 @@
 const express = require('express');
 const funcionario = require('./funcionario')
 
+
 const router = express.Router();
 
 router.use('/funcionario', funcionario)

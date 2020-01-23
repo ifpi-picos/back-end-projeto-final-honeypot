@@ -10,7 +10,6 @@ class FuncionarioController {
             return funcionarioSaved;
         } catch (e) {
             throw new Error(e);
-
         }
     }
 

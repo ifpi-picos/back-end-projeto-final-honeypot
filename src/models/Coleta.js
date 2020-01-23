@@ -25,7 +25,7 @@ const ColetaSchema = new mongoose.Schema({
     },
 
     pote250: {
-        type: String,
+        type: String,   
         required: true,
     },
 
@@ -40,7 +40,7 @@ const ColetaSchema = new mongoose.Schema({
   
     },
 
-    tambor  : {
+    tambor: {
         type: String,
         required: true,
   

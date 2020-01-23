@@ -22,11 +22,11 @@ const ApiarioSchema = new mongoose.Schema({
     },
 
     ovos: {
-        type: String,
-        required: true,
+       type: String,
+       required: true,
        
     },
-    florada: {
+   florada: {
         type: String,
         required: true,
         

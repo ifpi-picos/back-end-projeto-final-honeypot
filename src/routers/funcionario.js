@@ -6,10 +6,12 @@ const funController = new FunController(Funcionario);
 const router = express.Router();
 
 router.post("/", async (req, res) => {
+    console.log(req.body)
     try {
         const funDTO = req.body;
         const funcionarioSaved = await funController.save(funDTO);
-        res.send(funcionarioSaved);
+        
+        res.status(201).json(funcionarioSaved);
     } catch (e) {
         console.error(e);
         res.status(400).send(error.message);

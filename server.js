@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.options('*', cors());
 app.use('/', router);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT), () => {
+
+app.listen(3000), () => {
     console.log("App Online");
 }
